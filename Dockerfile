@@ -1,6 +1,8 @@
 # Use an official OpenJDK runtime as a parent image
 FROM openjdk:11-jre-slim
 
+RUN apt-get update && apt-get install -y netcat
+
 # Set the working directory in the container
 WORKDIR /app
 
