@@ -28,7 +28,7 @@ services:
     entrypoint: sh -c "until nc -z -v -w30 mysql 3306; do echo 'Waiting for database connection...'; sleep 5; done && java -jar /app/app.jar"
 
 frontend:
-    image: my-frontend-app:latest  # Replace with your frontend image
+    image: my-react-app:latest  # Replace with your frontend image
     container_name: frontend-container
     environment:
       BACKEND_URL: http://backend:8080
