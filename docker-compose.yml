@@ -27,7 +27,7 @@ services:
       - "8081:8080"
     entrypoint: sh -c "until nc -z -v -w30 mysql 3306; do echo 'Waiting for database connection...'; sleep 5; done && java -jar /app/app.jar"
 
-frontend:
+  frontend:
     image: my-react-app:latest  # Replace with your frontend image
     container_name: frontend-container
     environment:
@@ -37,7 +37,6 @@ frontend:
     ports:
       - "3000:3000"
 
-      
 volumes:
   db-data:
 
