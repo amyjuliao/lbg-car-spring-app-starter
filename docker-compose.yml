@@ -1,0 +1,31 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-container
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_NAME: appdb
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+
+volumes:
+  db-data:
