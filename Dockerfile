@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the packaged jar file into the container
-COPY target/lbg-car-spring-app-starter-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY target/cardatabase-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # Expose the port the application runs on
 EXPOSE 8080

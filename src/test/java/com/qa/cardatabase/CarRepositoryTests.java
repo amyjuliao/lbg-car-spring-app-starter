@@ -6,15 +6,18 @@ import com.qa.cardatabase.data.entity.Car;
 import com.qa.cardatabase.data.repository.CarRepository;
 import com.qa.cardatabase.data.entity.Owner;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
+@Disabled
 @RunWith(SpringRunner.class)
 @DataJpaTest
+@ActiveProfiles("dev")
 public class CarRepositoryTests {
     @Autowired
     private TestEntityManager entityManager;

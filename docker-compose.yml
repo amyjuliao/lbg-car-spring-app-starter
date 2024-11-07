@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   mysql:
     image: mysql:latest
@@ -10,12 +12,10 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "3307:3306"  # Changed external port to 3307 to avoid conflict
 
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: my-spring-boot-app:latest
     container_name: backend-container
     environment:
       DATABASE_HOST: mysql
@@ -26,6 +26,8 @@ services:
       - mysql
     ports:
       - "8080:8080"
+    entrypoint: sh -c "until nc -z -v -w30 mysql 3306; do echo 'Waiting for database connection...'; sleep 5; done && java -jar /app/app.jar"
 
 volumes:
   db-data:
+
