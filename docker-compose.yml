@@ -31,7 +31,7 @@ services:
     image: my-react-app:latest  # Replace with your frontend image
     container_name: frontend-container
     environment:
-      BACKEND_URL: http://backend:8081
+      BACKEND_URL: http://35.210.174.113:8081
     depends_on:
       - backend
     ports:
